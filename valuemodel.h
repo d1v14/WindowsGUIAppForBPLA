@@ -4,6 +4,8 @@
 #include "port.h"
 #include <QLabel>
 #include <vector>
+#include <QString>
+
 using namespace std;
 class ValueModel
 {

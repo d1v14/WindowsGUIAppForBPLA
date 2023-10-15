@@ -7,7 +7,7 @@ QSerialPort  *  Port::getPort() {
 
 }
 void Port::defPort(){
-    serial->setPortName(QString("com5"));
+    serial->setPortName(QString("com3"));
     serial->setBaudRate(QSerialPort::Baud9600);
     serial->setDataBits(QSerialPort::Data8);
     serial->setParity(QSerialPort::NoParity);

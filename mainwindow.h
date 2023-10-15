@@ -1,24 +1,21 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-#include "port.h"
+
 #include <QMainWindow>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QGridLayout>
-#include <QLabel>
+#include <QVector>
 #include "qcustomplot.h"
-#include <QWidget>
-#include <vector>
+#include "port.h"
 #include "valuemodel.h"
 
-using namespace std;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
     MainWindow(QWidget *parent = nullptr);
-   // ~MainWindow();
 private:
    QGridLayout *mainLayout;
    QHBoxLayout *engineLayout;
@@ -107,7 +104,6 @@ private:
    void defPlots();
    void defLabels();
    void defPort();
-   void getVals(vector<char> vecVal);
    void putPlotVals();
    void fillApp();
    void fillPlots();
@@ -116,8 +112,10 @@ private slots:
     void serialRecieve();
 
 private:
+    QSerialPort *serial;
     Port port;
     ValueModel modelVal;
+
+
 };
 #endif // MAINWINDOW_H
-

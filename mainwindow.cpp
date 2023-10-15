@@ -1,5 +1,7 @@
 #include "mainwindow.h"
-
+#include <QWidget>
+#include <QByteArray>
+#include <string>
 MainWindow::MainWindow(QWidget *parent): QMainWindow(parent)
 {
     QWidget *mainWidget = new QWidget();
@@ -172,7 +174,6 @@ void MainWindow::defLabels(){
     screwRealLabel->setFixedWidth(40);
     screwAvLabel->setFixedWidth(40);
     screwEnteredLabel->setFixedWidth(40);
-
     modelVal.pushLabel(new QLabel("1"));
     modelVal.pushLabel(engineRealVal);
     modelVal.pushLabel(engineAvVal);
@@ -224,6 +225,7 @@ void MainWindow::defLabels(){
     modelVal.pushLabelValue("0");
     modelVal.pushLabelValue("0");
     modelVal.pushLabelValue("0");
+
 }
 
 void MainWindow::defLayouts(){
@@ -258,7 +260,6 @@ void MainWindow::defLayouts(){
 }
 
 
-
 void MainWindow::serialRecieve(){
     QByteArray ba;
     ba = this->port.getPort()->readAll();
@@ -270,14 +271,14 @@ void MainWindow::serialRecieve(){
             fillPlots();
             modelVal.clearVecValues();
         }
-        modelVal.pushValue(static_cast<char>(ba[i]));
+        modelVal.pushValue((char)ba[i]);
     }
 }
 
 
 
 void MainWindow::fillApp(){
-    for(int i = 0; static_cast<unsigned long long>(i)<modelVal.getSizeVal();i++){
+    for(int i = 0; i<modelVal.getSizeVal();i++){
         modelVal.setLabelValue(i);
     }
 }
@@ -372,85 +373,3 @@ void MainWindow::defPlots(){
     plotVT->addGraph();
     plotVT->replot();
 }
-//MainWindow::~MainWindow(){
-//    delete mainLayout;
-//     delete engineLayout;
-//     delete tailScrewLayout;
-//     delete shaftLayout;
-//     delete envLayout;
-//     delete powLayout;
-//     delete lastLayout;
-//     delete vecTLayout;
-//     delete pwmLayout;
-//     delete vecDLayout;
-//     delete volamLayout;
-//     delete dataLabels;
-//     delete engineValues;
-//     delete tailScrewValues;
-//     delete screwValues;
-//     delete screwLabels;
-//     delete temp;
-//     delete press;
-//     delete density;
-//     delete plotLay;
-//     delete plotTLay;
-//     delete indLayout;
-//     delete  anTorqLayout;
-//     delete thrustLayout;
-//     delete indWrite;
-//     delete indCal;
-//     delete indConP;
-//     delete indConB;
-//     delete but;
-//     delete plotThrustLabel;
-//     delete powBlock;
-//     delete fPlot;
-//     delete engineRealLabel;
-//     delete engineAvLabel;
-//     delete engineEnteredLabel;
-//     delete screwRealLabel;
-//     delete screwAvLabel;
-//     delete screwEnteredLabel;
-//     delete engineRealVal;
-//     delete engineAvVal;
-//     delete engineEnteredVal;
-//     delete screwRealVal;
-//     delete screwAvVal;
-//     delete screwEnteredVal;
-//     delete shaftLabel;
-//     delete shaftValue;
-//     delete engineLabel;
-//     delete shaftSpeedLabel;
-//     delete screwSpeedLabel;
-//     delete envLabel;
-//     delete tempLabel;
-//     delete pressLabel;
-//     delete densLabel;
-//     delete tempVal;
-//     delete pressVal;
-//     delete voltsVal;
-//     delete ampersVal;
-//     delete voltsLabel;
-//     delete ampersLabel;
-//     delete densVal;
-//     delete angleLabel;
-//     delete torqueLable;
-//     delete angleVal;
-//     delete torqueVal;
-//     delete vecTLab;
-//     delete vecTvalX;
-//     delete vecTvalY;
-//     delete pwmLab;
-//     delete pwmVal1;
-//     delete pwmVal2;
-//     delete pwmVal3;
-//     delete vecDLab;
-//     delete vecDval;
-//     delete plotES;
-//     delete plotShS;
-//     delete plotScS;
-//     delete plotP;
-//     delete plotT;
-//     delete plotVT;
-//}
-
